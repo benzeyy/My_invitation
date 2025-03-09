@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #invitationCard {
+            display: none;
+            background-color: #680c0c; /* Wood color */
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            margin: auto;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        #invitationCard img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        #heartBackground {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('heart_background.jpg'); /* Add your heart image here */
+            background-size: cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>hello soppana sundari!</h1>
+    <p>remember us !being so much happy and a good couple</p>
+    <h3>wanna go back time? </h3>
+    <button id="yesButton">ok lets fix this</button>
+    <button id="noButton">Not intrested</button>
+<h1></h1>
+    <div id="invitationCard">
+        <div id="heartBackground"></div>
+        <img id="invitationImage" src="./ecopark.jpg" alt="Invitation Image">
+        <h1></h1>
+        <img id="invitationImage" src="./july.jpg" alt="Invitation Image">
+<h1></h1>
+        <img id="invitationImage" src="./arshben.jpg" alt="Invitation Image">
+        <button id="nextButton">Click Next</button>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const invitationCard = document.getElementById('invitationCard');
+        const invitationImage = document.getElementById('invitationImage');
+        const nextButton = document.getElementById('nextButton');
+
+        yesButton.addEventListener('click', function() {
+            invitationCard.style.display = 'block';
+            // Prompt user to upload an image
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            fileInput.onchange = function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        invitationImage.src = e.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            }
+            fileInput.click();
+        });
+
+        noButton.addEventListener('click', function() {
+            noButton.style.display = 'none';
+            const remainingClicks = Math.max(0, 100 - (20 * (3 - parseInt(noButton.style.display === 'none'))));
+            alert(`You have ${remainingClicks}% of your clicks left.`);
+        });
+
+        nextButton.addEventListener('click', function() {
+            alert("I'm sorry sorry sorry sorry sorry sorry sorry 💐🌹\nI love you Arshad 🫀🫀");
+        });
+    </script>
+
+</body>
+</html>
